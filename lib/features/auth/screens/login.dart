@@ -2,6 +2,7 @@ import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:whatsapp_clone/colors.dart';
+import 'package:whatsapp_clone/common/utils/utils.dart';
 import 'package:whatsapp_clone/common/widgets/custom_botton.dart';
 import 'package:whatsapp_clone/features/auth/controller/auth_controller.dart';
 
@@ -42,6 +43,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             context,
             '+${country!.phoneCode}$phoneNumber',
           );
+    }else{
+      showSnackBar(context: context, content: 'Tüm Alanları Doldurun');
     }
   }
 
@@ -89,7 +92,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     child: TextField(
                       controller: phoneController,
                       decoration: const InputDecoration(
-                        hintText: 'Telefon Numarsı',
+                        hintText: 'Telefon Numarası',
                       ),
                     ),
                   ),
@@ -102,7 +105,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 width: 90,
                 child: CustomButton(
                   text: 'İLERİ',
-                  onPressed: () {},
+                  onPressed: sendPhoneNumber,
                 ),
               )
             ],
